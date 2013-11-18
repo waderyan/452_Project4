@@ -1,0 +1,71 @@
+@(routes: List[Route])(opt: List[UserOption])
+
+<div id="special" class="row">
+	 	<h2 class="pull-right"> Cheapest Fare </h2>
+	 	<div class="col-md-4"></div>
+	 	<div class="col-md-4">
+	 		<form class="form-horizontal" action="special" method="post" role="form">
+	 			<div class="form-group">
+			 		<select name="opt-type" class="form-control">
+			 			<option>A - Stops n and Mileage m</option>
+	 					<option>B - Airfare cannot exceed m dollars</option>
+	 					<option>C - No travel during hh:mm </option>
+			 		</select>
+			 	</div>
+
+			 	<div class="form-group">
+			 		<input class="form-control" name="src-city" type="text" placeholder="Source City">
+			 		<input class="form-control" name="dest-city" type="text" placeholder="Destination City">
+			 		<input class="form-control" name="opt-var1" type="text">
+			 		<input class="form-control" name="opt-var2" type="text">
+			 	</div>
+			 	<div class="form-group">
+			 		<button class="form-control btn btn-large btn-primary" type="submit">Find Route</button>
+			 	</div>
+	 		</form>
+	 	</div>
+	 </div>
+<hr class="divider">
+<div class="row">
+@if(opt.length > 0) {
+		@for(o <- opt) {
+			<h2 class="pull-right">@o.letter :: @o.src_city -> @o.dest_city :: @o.other </h2>
+		}
+}
+</div>
+<hr class="divider">
+<div class="row">
+	@if(routes.length > 0) {
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			@for(r <- routes) {
+				<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Flight-Num</th>
+						<th>Source City</th>
+						<th>Dest City</th>
+						<th>Departure Time</th>
+						<th>Arrival Time</th>
+						<th>Airfare</th>
+						<th>Mileage</th>
+					</tr>
+				</thead>
+				<tbody>
+					@for(f <- r.flights) {
+						<tr> 
+							<td>@f.flight_num</td>
+							<td>@f.source_city</td>
+							<td>@f.dest_city</td>
+							<td>@f.dep_time</td>
+							<td>@f.arr_time</td>
+							<td>@f.airfare</td>
+							<td>@f.mileage</td>
+						</tr>
+					}
+				</tbody>
+				</table>
+			}
+		</div>
+	}
+</div>

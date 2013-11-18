@@ -1,0 +1,70 @@
+.dml {
+	border: 1px solid #C0C0C0;
+	border-radius: 5px;
+	height: 500px;
+}
+
+.dml-inner {
+	padding: 10px;
+}
+
+.dml-container {
+	margin-left: 5px;
+}
+
+.dml-submit {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.dml-input {
+	border-radius: 0px;
+}
+
+.main {
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.divider {
+	margin: 40px;
+}
+
+.menu {
+	border-radius: 5px;
+	background-color: #6495ED;
+	padding: 1%;
+	margin: 1%;
+}
+
+.menu-list {
+	list-style: none;
+}
+
+.menu-list-item {
+	background-color: #F0F0F0;
+	border-radius: 3px;
+	margin: 5%;
+	padding: 5%;
+}
+
+.menu-list-item:hover {
+	background-color: #FFFF00;
+}
+
+.data {
+	border-radius: 5px;
+	background-color: #6495ED;
+	margin: 1%;
+	padding: 1%;
+}
+
+.heading {
+	text-align: center;
+}
+
+.btn-form-options {
+	margin: 5px;
+	display: block;
+}

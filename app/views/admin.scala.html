@@ -1,0 +1,194 @@
+@(flights: List[Flight], crew: List[Crew])
+       <div id="admin" class="row">
+        <div class="row">
+           <h2 class="pull-right"> Data Manipulation </h2>
+        </div>
+        <div class="col-md-12">
+          <div class="container dml-container">
+            <div class="row ">
+
+              <!-- Insert Crew -->
+              <div class="col-md-2 dml">
+                <div class="dml-inner">
+                  <legend> Insert Crew </legend>
+                  <form class="form-horizontal" action="crew" method="post" role="form">
+                    <div class="form-group">
+                        <input name="name" class="form-control dml-input" placeholder="Name">
+                        <input name="salary" class="form-control dml-input" placeholder="Salary">
+                        <input name="position" class="form-control dml-input" placeholder="Position">
+                        <input name="seniority" class="form-control dml-input" placeholder="Seniority">
+                        <input name="fly-hours" class="form-control dml-input" placeholder="Fly_hours">
+                      </div>
+                      <div class="form-group">
+                        <label> Manager </label>
+                        <select name="mgr" class="form-control">
+                        @for(c <- crew) {
+                            <option>@c.id - @c.name</option>
+                          }
+                          <option>null</option>
+                        </select>
+                     </div>
+                     <div class="form-group">
+                        <label> Flight Number </label>
+                         <select name="flight[]" multiple class="form-control">
+                         @for(flight <- flights) {
+                            <option>@flight.flight_num: @flight.source_city - @flight.dest_city</option>
+                         }
+                        </select>
+                    </div>
+
+                    <div class="form-group dml-submit">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-large btn-primary">Insert</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Insert Flight -->
+              <div class="col-md-2 dml">
+                <div class="dml-inner">
+                  <legend> Insert Flight </legend>
+                  <form class="form-horizontal" action="flight" method="post" role="form">
+                    <div class="form-group">
+                        <input name="flight-num" class="form-control dml-input" placeholder="Flight Num">
+                        <input name="src-city" class="form-control dml-input" placeholder="Source City">
+                        <input name="dest-city" class="form-control dml-input" placeholder="Destination City">
+                        <input name="dep-time" class="form-control dml-input" placeholder="Departure Time">
+                        <input name="arr-time" class="form-control dml-input" placeholder="Arrival Time">
+                        <input name="airfare" class="form-control dml-input" placeholder="Airfare">
+                        <input name="mileage" class="form-control dml-input" placeholder="Mileage">
+                    </div>
+                    <div class="form-group">
+                        <label> Crew ID </label>
+                         <select name="crew[]" multiple class="form-control">
+                         @for(c <- crew) {
+                            <option>@c.id - @c.name</option>
+                          }
+                        </select>
+                    </div>
+                    <div class="form-group dml-submit">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-large btn-primary">Insert</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+               <!-- Modify Crew -->
+              <div class="col-md-2 dml">
+                <div class="dml-inner">
+                  <legend> Modify Crew </legend>
+                  <form class="form-horizontal" action="m/crew" method="post" role="form">
+                    <div class="form-group">
+                         <label> Crew ID </label>
+                         <select name="original_id" class="form-control">
+                         @for(c <- crew) {
+                            <option>@c.id - @c.name</option>
+                          }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input name="name" class="form-control dml-input" placeholder="Name">
+                        <input name="salary" class="form-control dml-input" placeholder="Salary">
+                        <input name="position" class="form-control dml-input" placeholder="Position">
+                        <input name="seniority" class="form-control dml-input" placeholder="Seniority">
+                        <input name="flyhours" class="form-control dml-input" placeholder="Fly_hours">
+                      </div>
+                      <div class="form-group">
+                        <label> Manager </label>
+                        <select name="mgrid" class="form-control">
+                        @for(c <- crew) {
+                            <option>@c.id - @c.name</option>
+                          }
+                           <option>null</option>
+                        </select>
+                     </div>
+                    <div class="form-group dml-submit">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button class="btn btn-large btn-primary">Modify</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Modify Flight -->
+              <div class="col-md-2 dml">
+                <div class="dml-inner">
+                  <legend> Modify Flight </legend>
+                  <form class="form-horizontal" action="m/flight" method="post" role="form">
+                     <div class="form-group">
+                         <label> Flight Num </label>
+                         <select name="old-flight-num" class="form-control">
+                          @for(flight <- flights) {
+                            <option>@flight.flight_num: @flight.source_city - @flight.dest_city</option>
+                         }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input name="flight-num" class="form-control dml-input" placeholder="Flight Num">
+                        <input name="src-city" class="form-control dml-input" placeholder="Source City">
+                        <input name="dest-city" class="form-control dml-input" placeholder="Destination City">
+                        <input name="dep-time" class="form-control dml-input" placeholder="Departure Time">
+                        <input name="arr-time" class="form-control dml-input" placeholder="Arrival Time">
+                        <input name="airfare" class="form-control dml-input" placeholder="Airfare">
+                        <input name="mileage" class="form-control dml-input" placeholder="Mileage">
+                    </div>
+                    <div class="form-group dml-submit">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-large btn-primary">Modify</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Delete Crew -->
+              <div class="col-md-2 dml">
+                <div class="dml-inner">
+                  <legend> Delete Crew </legend>
+                  <form class="form-horizontal" action="d/crew" method="post" role="form">
+                    <div class="form-group">
+                         <label> Crew ID </label>
+                         <select name="id" class="form-control">
+                         @for(c <- crew) {
+                            <option>@c.id - @c.name</option>
+                          }
+                        </select>
+                    </div>
+                    <div class="form-group dml-submit">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-large btn-primary">Delete</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              
+              <!-- Delete Flight -->
+              <div class="col-md-2 dml">
+                <div class="dml-inner">
+                  <legend> Delete Flight </legend>
+                  <form class="form-horizontal" action="d/flight" method="post" role="form">
+                     <div class="form-group">
+                         <label> Flight Num </label>
+                         <select name="flight-num" class="form-control">
+                          @for(flight <- flights) {
+                            <option>@flight.flight_num: @flight.source_city - @flight.dest_city</option>
+                         }
+                        </select>
+                    </div>
+                    <div class="form-group dml-submit">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-large btn-primary">Delete</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+        </div>
+       </div>

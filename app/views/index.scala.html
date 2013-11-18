@@ -1,0 +1,55 @@
+@(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>452 Project 4</title>
+	<link rel="stylesheet" type="text/css" href="assets/stylesheets/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="assets/stylesheets/bootstrap-responsive.css">
+	<link rel="stylesheet" type="text/css" href="assets/stylesheets/main.css">
+	<link rel="stylesheet" type="text/css" href="assets/stylesheets/bootstrap-theme.css">
+</head>
+<body>
+
+    <div class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project 4</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/database">Database</a></li>
+            <li><a href="/admin">Data Manipulation</a></li>
+            <li><a href="/cheapest">Cheapest Route</a></li>
+            <li><a href="/shortest">Shortest Route</a></li>
+            <li><a href="/special">Special Routes</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+ <div class="container">
+
+	@content
+
+	<hr class="divider">
+  <footer>
+    <p>&copy; Wade Anderson</p>
+  </footer>
+  </div><!-- /.container -->
+
+
+<script type="text/javascript" src="assets/javascripts/jquery/jquery-1.6.2.js"></script>
+<script type="text/javascript" src="assets/javascripts/view.js"></script>
+
+</body>
+</html>
+
+    
+
+

@@ -1,0 +1,30 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+GET     /admin                      controllers.Application.admin()
+GET     /cheapest                   controllers.Application.cheapest()
+GET     /shortest                   controllers.Application.shortest()
+GET     /special                    controllers.Application.special()
+GET     /database                   controllers.Application.getDb()
+GET     /reset                      controllers.Application.resetDb()
+
+
+POST    /cheapest                   controllers.FlightController.cheapestRoute()
+POST    /shortest                   controllers.FlightController.shortestRoute()
+POST    /special                    controllers.FlightController.specialRoute()
+
+
+POST    /crew                       controllers.CrewController.insert()
+POST    /m/crew                     controllers.CrewController.update()
+POST    /d/crew                     controllers.CrewController.delete()
+
+POST    /flight                     controllers.FlightController.insert()
+POST    /m/flight                   controllers.FlightController.update()
+POST    /d/flight                   controllers.FlightController.delete()
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

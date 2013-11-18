@@ -1,0 +1,86 @@
+@(crew: List[Crew], flights: List[Flight], assign: List[Assign])
+
+<div class="container">
+	<div class="row">
+		<form action="/reset" method="get">
+			<input type="submit" value="Reset" class="pull-right btn btn-large btn-primary"></input>
+		</form>
+		<h2> Crew </h2>
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>name</th>
+					<th>salary</th>
+					<th>position</th>
+					<th>seniority</th>
+					<th>fly_hours</th>
+					<th>mgrid</th>
+				</tr>
+			</thead>
+			<tbody>
+				@for(c <- crew) {
+					<tr> 
+						<td>@c.id</td>
+						<td>@c.name</td>
+						<td>@c.salary</td>
+						<td>@c.position</td>
+						<td>@c.seniority</td>
+						<td>@c.fly_hours</td>
+						<td>@c.mgrid</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+
+		<hr class="divider">
+
+		<h2> Flights </h2>
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>flight_num</th>
+					<th>source_city</th>
+					<th>dest_city</th>
+					<th>dep_time</th>
+					<th>arr_time</th>
+					<th>airfare</th>
+					<th>mileage</th>
+				</tr>
+			</thead>
+			<tbody>
+				@for(f <- flights) {
+					<tr> 
+						<td>@f.flight_num</td>
+						<td>@f.source_city</td>
+						<td>@f.dest_city</td>
+						<td>@f.dep_time</td>
+						<td>@f.arr_time</td>
+						<td>@f.airfare</td>
+						<td>@f.mileage</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+
+		<hr class="divider">
+
+		<h2> Assign </h2>
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>flight_num</th>
+				</tr>
+			</thead>
+			<tbody>
+				@for(a <- assign) {
+					<tr> 
+						<td>@a.id</td>
+						<td>@a.flight_num</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
